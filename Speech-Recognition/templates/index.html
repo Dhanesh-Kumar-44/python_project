@@ -1,0 +1,481 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speech Recognition in Python</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}" />
+</head>
+<body>
+<div id="speechContainer">
+    <h1>Upload new File</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file"/>
+        <br>
+        <input type="submit" id="submitButton" value="Transcribe"/>
+    </form>
+
+    {% if transcript != "" %}
+        <div id="speechTranscriptContainer">
+            <h1>Transcript</h1>
+            <p id="speechText">{{ transcript }}</p>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY PERSONALIA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/image/logo_black.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style type="text/css">
+      .centered {
+        position:absolute;
+        width: 33%;
+        height:28px;
+        top: 20%;
+        margin-left: -117px;
+        left: 40%;
+        margin-top: 13%;
+        transform: scale(0.1);
+
+<!--        position: fixed;-->
+<!--        top: 50%;-->
+<!--        left: 50%;-->
+<!--        transform: translate(-50%, -50%);-->
+<!--        transform: -webkit-translate(-50%, -50%);-->
+<!--        transform: -moz-translate(-50%, -50%);-->
+<!--        transform: -ms-translate(-50%, -50%);-->
+<!--        color:darkred;-->
+      }
+</style>
+
+</head>
+
+<body>
+
+<!--  alert("Hello! I am an alert box!!");-->
+  <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="side-navigation">
+
+    <div class="sidebar-header d-flex justify-content-center align-items-center px-3 py-4">
+
+
+      <img class="img-fluid" src="  {{ url_for('static', filename='/assets/images/logo_black.png') }}" alt="">
+
+    </div>
+
+    <ul class="categories list-unstyled">
+
+      <li >
+        <a href="index.html" class="active"><img src="  {{ url_for('static', filename='/assets/images/Transcribe.png') }}"> Transcribe</a>
+      </li>
+
+      <li class="">
+       <a href="index.html" class=""><img src="{{ url_for('static', filename='/assets/images/FilesFolders.png') }}">Files & Folders</a>
+      </li>
+
+      <li class="">
+        <a href="index.html" class=""><img src="{{ url_for('static', filename='assets/images/Utilization.png') }}">Utilization</a>
+      </li>
+
+      <li class="">
+        <a href="index.html" class=""><img src="{{ url_for('static', filename='assets/images/Pricing.png') }}">Pricing</a>
+      </li>
+
+      <li class="">
+       <a href="index.html" class=""><img src="{{ url_for('static', filename='assets/images/Support.png') }}">Support</a>
+      </li>
+
+      <li class="">
+        <a href="#" class=""><img src="{{ url_for('static', filename='assets/images/Settings.png') }}">Settings</a>
+       </li>
+
+
+
+       <li class="">
+        <img src="{{ url_for('static', filename='assets/images/Trans-t.png') }}">
+       </li>
+
+       <li class="upgrade-image">
+        <img  src="{{ url_for('static', filename='assets/images/upgrade.png') }}">
+       </li>
+
+
+    </ul>
+
+  </aside>
+
+
+      <section id="wrapper">
+
+
+        <nav class="navbar navbar-expand-md">
+          <div class="container-fluid mx-2">
+            <div class="collapse navbar-collapse" id="toggle-navbar">
+              <input type="search" name="search" id="" placeholder="search" class="nav-search">
+              <ul class="navbar-nav ms-auto custom-dropdown">
+
+
+                <li class="nav-item dropdown">
+
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Livia Mango
+                  </a>
+
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                    <li class="profile-dropdown">
+
+                      <a class="dropdown-item" href="#">
+                       View Profile
+                      </a>
+
+                    </li>
+
+                    <li class="profile-dropdown">
+
+                      <a class="dropdown-item" href="#">
+                       Billing Subscription
+                      </a>
+
+                    </li>
+
+                    <li class="profile-dropdown">
+
+                      <a class="dropdown-item" href="#">
+                       Sign Out
+                      </a>
+
+                    </li>
+
+
+
+                  </ul>
+
+                </li>
+
+                <li class="nav-item dropdown">
+
+                  <a class="nav-link profile-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    OM
+                  </a>
+
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                    <li class="profile-dropdown">
+
+                      <a class="dropdown-item" href="#">
+                       View Profile
+                      </a>
+
+                    </li>
+
+                    <li class="profile-dropdown">
+
+                      <a class="dropdown-item" href="#">
+                       Billing Subscription
+                      </a>
+
+                    </li>
+
+                    <li class="profile-dropdown">
+
+                      <a class="dropdown-item" href="#">
+                       Sign Out
+                      </a>
+
+                    </li>
+
+
+
+                  </ul>
+
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+
+
+
+        </div>
+
+
+
+      </section>
+
+      <!-- File Upload section -->
+
+      <Section>
+        <div class="container">
+          <div class="row">
+            <div class="col-2">
+
+            </div>
+
+
+            <div class="col-10 py-2 mt-4 p-6 bg-light rounded-3 ">
+              <div class="d-flex">
+                <img src="{{ url_for('static', filename='/assets/images/Transcribe-icon.png') }}" alt="Trancribe image">
+                <h4 class="ps-3 pt-1">Transcribe</h4>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row">
+            <div class="col-2 p-0">
+
+            </div>
+
+          <div class="col-5 file-div-height mt-4 py-4">
+
+            <div id="speechContainer">
+
+              <form method="post" enctype="multipart/form-data" class="text-center">
+                <label for="input-tag">
+                <h3 class="pb-3">Drop your files here</h3>
+                <p class="pb-3">or</p>
+                
+                <label for="inputTag" class="upload-btn">
+                  Select file from computer
+                  <input id="inputTag" type="file" name="file">
+                  <br>
+                </label>
+                <!-- <p class="pt-2">.MP4 .MOV .WMV .MP3 .M4A .WAV .FLAC</p> -->
+                <br>
+
+                <div class="d-flex align-items-center">
+
+                <button  type="submit" id="submitButton" value="Transcribe" class="btn-new-2 me-2 mt-3">Transcribe Audio</button>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn-new-4 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> See Result</button>
+
+                </div>
+                
+              </form>
+
+              <!-- Result Modal -->
+            
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Your Transcription Result</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+<!--            ...-->
+
+              {% if transcript != "" %}
+                <div id="speechTranscriptContainer2">
+                    <h1>Transcript</h1>
+                    <p id="speechText2">{{ transcript }}</p>
+                </div>
+              {% endif %}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary"> <span> <img src="{{ url_for('static', filename='/assets/images/file-download-line.svg') }}" alt=""></span> Download File</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+          <!-- Modal end -->
+
+            </div>
+
+          </div>
+              
+
+            <div class="col-5 file-div-link mt-4 py-4 ">
+
+              <div class="text-center">
+                <h3 class="pb-3">Upload from Youtube or Cloud</h3>
+                <p class="pb-3 px-4">will transcribe the audio or video from youtube link or cloud storage (Google Drive, One Drive, Dropbox).</p>
+                <button type="button" class="btn-new-3 ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Transcribe via link</button>
+
+              </div>
+
+              <!-- {% if transcript != "" %}
+                      <div id="speechTranscriptContainer">
+                          <h1>Transcript</h1>
+                          <p id="speechText">{{ transcript }}</p>
+                      </div>
+                  {% endif %} -->
+
+                 {% if error != "" %}
+                      <div id="speechTranscriptContainer">
+<!--                          <h1>error</h1>-->
+                          <p id="speechText">{{ error }}</p>
+                      </div>
+                  {% endif %}
+
+            </div>
+
+              
+
+                <!-- modal -->
+<!--            <form action="/through_link" method="post">-->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Transcribe your URL</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                      <p>*Please make sure that the link or file is public and from one of below websites or raw media files...</p>
+                        <div class="d-flex justify-content-evenly py-5">
+
+                            <li class="list-unstyled"><img src="{{ url_for('static', filename='/assets/images/youtube.png') }}" alt=""></li>
+                            <li class="list-unstyled"><img src="{{ url_for('static', filename='/assets/images/google-drive.png') }}" alt=""></li>
+                            <li class="list-unstyled"><img src="{{ url_for('static', filename='/assets/images/onedrive.png') }}" alt=""></li>
+                            <li class="list-unstyled"><img src="{{ url_for('static', filename='/assets/images/dropbox.png') }}" alt=""></li>
+
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="basic-url" class="form-label">Your vanity URL</label>
+                          <div class="input-group">
+                            <span class="input-group-text" id="basic-addon3">https://</span>
+                            <input id="id_url_link" type="text" name="url_link" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                          </div>
+
+<!--                          <select class="form-select mt-4" aria-label="Default select example">-->
+<!--                            <option selected>Select Language</option>-->
+<!--                            <option value="1">One</option>-->
+<!--                            <option value="2">Two</option>-->
+<!--                            <option value="3">Three</option>-->
+<!--                          </select>-->
+
+<!--                          <select class="form-select mt-4" aria-label="Default select example">-->
+<!--                            <option selected>Service</option>-->
+<!--                            <option value="1">One</option>-->
+<!--                            <option value="2">Two</option>-->
+<!--                            <option value="3">Three</option>-->
+<!--                          </select>-->
+                          <select id="selection_type" name="type" class="form-select mt-4" aria-label="Default select example">
+                            <option value="0" selected>Type</option>
+                            <option value="1">Youtube</option>
+                            <option value="2">Google Drive</option>
+                          </select>
+                        </div>
+
+                      </div>
+
+<!--                      <form action="/youtube" method="post">-->
+                        <div class="modal-footer">
+<!--                          <input type="submit" class="btn-pri" value="TRANSCRIBE">-->
+                          <button id="btn_through_youtube" type="button" value="through_youtube" class="btn-pri">TRANSCRIBE</button>
+                        </div>
+<!--            </form>-->
+
+<!--                <form action="/youtube" method="post" enctype="multipart/form-data" class="text-center">-->
+
+<!--                &lt;!&ndash; <p class="pt-2">.MP4 .MOV .WMV .MP3 .M4A .WAV .FLAC</p> &ndash;&gt;-->
+<!--                <br>-->
+
+<!--&lt;!&ndash;                <div class="d-flex align-items-center">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <button  type="submit" id="submitButton" value="Transcribe" class="btn-new-2 me-2 mt-3">Transcribe Audio</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--                  <div class="modal-footer">-->
+<!--                        <button type="button" class="btn-pri">TRANSCRIBE</button>-->
+<!--                      </div>-->
+<!--              </form>-->
+
+
+<!--                      <div class="modal-footer">-->
+<!--                        <button type="button" class="btn-pri">TRANSCRIBE</button>-->
+<!--                      </div>-->
+                    </div>
+                  </div>
+                            <div id="loader" class="centered" style="display: none;">
+            <!--            <img src="https://i.gifer.com/1amw.gif" style="width:48px;height:48px;">-->
+                            <img src="https://i.gifer.com/1amw.gif" > <b>Loading...</b>
+
+                            </div>
+                </div>
+
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </Section>
+
+
+
+<!--        <div class="response">-->
+
+<!--        </div>-->
+
+
+
+    <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/main.js') }}"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#btn_through_youtube").click(function(){
+                var url_link = $("#id_url_link").val();
+                var selection_type = $("#selection_type").val();
+<!--                alert(selection_type);-->
+<!--                alert(url_link);-->
+
+                $.ajax({
+                url:'/through_link',
+                type:'post',
+                data: {"type":selection_type, "url_link":url_link},
+                beforeSend: function(){
+                $("#loader").show();
+                },
+                success: function(response){
+                    $('body').html(response);
+<!--                    var myDiv = $('#container');-->
+<!--                    alert(myDiv);-->
+<!--                    myDiv.html(response);-->
+<!--                    document.location.href = '/through_link';-->
+<!--                $('.container').empty();-->
+<!--                $('.container').append(container.htmlresponse);-->
+                },
+                complete: function(data){
+                $("#loader").hide();
+                }
+                });
+
+            });
+        });
+
+        </script>
+
+</body>
+</html>
